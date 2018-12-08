@@ -92,14 +92,14 @@ def matching_local_features():
     detector = cv.xfeatures2d.SIFT_create()
 
     # 2.b.
-    img1 = openImage("poster_test.jpg")
+    img1 = openImage("images_2/poster_test.jpg")
     kp1, d1 = detector.detectAndCompute(img1,None)
 
     # 2.c.
     matcher = cv.FlannBasedMatcher()
 
     for i in range(1,8):
-        image = openImage("poster" + str(i) + ".jpg")
+        image = openImage("images_2/poster" + str(i) + ".jpg")
         kp, d = detector.detectAndCompute(image,None)
 
         matches = matcher.match(d1,d)
