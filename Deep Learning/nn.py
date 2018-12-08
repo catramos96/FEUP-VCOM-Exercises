@@ -6,13 +6,16 @@ import pandas as pd
 
 def main():
     ## load dataset
-
+    x_train, y_train, x_test, y_test = loadMNISTdataset()
 
     ## create model
-
+    model = Sequential()
+    model.add(Dense(64, input_dim=28*28, init='uniform', activation='sigmoid'))
+    model.add(Dense(10, init='uniform', activation='sigmoid'))
+    model.compile(loss='mse', optimizer='adam', metrics=['accuracy'])
 
     ## train the model
-
+    history = model.fit(x_train, y_train, batch_size=64, nb_epoch=3, verbose=1, validation_split=0.1)
 
     ## test the model
 
